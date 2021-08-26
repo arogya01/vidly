@@ -1,11 +1,17 @@
 const express = require("express");
 const app = express();
+const morgan=require('morgan');
 
-require("./startup/logging")();
+process.env['NODE_ENV']='test';
+
+app.use(morgan('combined'));
+require("./startup/logging");
 require("./startup/routes")(app);
 require("./startup/db")();
 require("./startup/config")();
 require("./startup/validation")();
 
 const port = process.env.PORT || 300;
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+const server=app.listen(port, () => console.log(`Listening on port ${port}...`));
+
+module.exports=server; 

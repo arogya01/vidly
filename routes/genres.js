@@ -9,9 +9,9 @@ const jwt = require("jsonwebtoken");
 router.get(
   "/",
   async (req, res) => {
-       throw new error('deliberate error');
-      const genres = await Genre.find().sort("name"); //obtain the values from the database
-      res.send(genres); // send the values to the client side    
+      //  throw new error('deliberate error');
+      const genres= await Genre.find().sort('name');
+      res.send(genres);    
   });
 
 router.post("/", auth, async (req, res) => {
