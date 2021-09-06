@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const morgan=require('morgan');
 
-process.env['NODE_ENV']='test';
+console.log(process.env['NODE_ENV']);
 
 app.use(morgan('combined'));
 require("./startup/logging");
